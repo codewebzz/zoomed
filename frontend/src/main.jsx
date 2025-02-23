@@ -19,6 +19,8 @@ import Add from './admin/Add.jsx';
 import OrderList from "./admin/pages/OrderList.jsx"
 import { ThemeProvider } from "@material-tailwind/react";
 import Profile from './pages/Profile.jsx';
+import Explore from './pages/Explore.jsx';
+import Subscribers from './admin/pages/Subscribers.jsx';
 
 
 const router = createBrowserRouter(
@@ -36,9 +38,11 @@ const router = createBrowserRouter(
       </Route>
       <Route element={<PrivateRoutes />} >
         <Route path='/admin' element={<List />} />
+        <Route path='/admin/subscribers' element={<Subscribers />} />
       </Route>
       <Route path='/about' element={<About />} />
       <Route path='/contact' element={<Contact />} />
+      <Route path='/explore' element={<Explore />} />
       <Route path='/product/:productId' element={<Product />} />
       <Route path='/login' element={<Login />} />
       <Route path="*" element={<div className='text-3xl font-serif font-semibold text-center animate-bounce'>Page not found...</div>} />

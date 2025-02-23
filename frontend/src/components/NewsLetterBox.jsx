@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useSubscribeMutation } from '../redux/api/subscribApi';
+import frog from '../assets/frontend_assets/frog.jpg';
+import { Button } from '@material-tailwind/react';
 
 const NewsLetterBox = () => {
     const [subscribe, { isLoading }] = useSubscribeMutation();
@@ -26,22 +28,29 @@ const NewsLetterBox = () => {
                 setFormData({ email: '', fullName: '', phoneNo: '', address: '' }); // Clear form
             }
         } catch (error) {
-            toast.error(error?.data?.message || 'Subscription failed');
+            if (error?.data?.message?.includes('E11000 duplicate key error collection')) {
+                toast.error('You are already subscribed');
+            } else if (error?.status == 401) {
+                toast.error('Please login to subscribe');
+            } else {
+                toast.error(error?.data?.message || 'Subscription failed');
+            }
+            setFormData({ email: '', fullName: '', phoneNo: '', address: '' });
             console.error('Error subscribing:', error);
         }
     };
 
     return (
         <>
-            <div className="flex w-full my-10">
-                <div className="w-1/2 overflow-hidden">
+            <div className="flex flex-wrap w-full my-10">
+                <div className="w-full md:w-1/2 overflow-hidden">
                     <img
                         className="w-full h-full hover:scale-110 transition-all duration-100 ease-in-out"
-                        src="https://i.pinimg.com/736x/95/e4/4e/95e44ede4b8ea0b4607bd1158405bef6.jpg"
+                        src={frog}
                         alt="Newsletter"
                     />
                 </div>
-                <div className="w-1/2 p-10">
+                <div className="w-full md:w-1/2 p-10">
                     <h1 className="text-center uppercase font-semibold">Care Guides</h1>
                     <p>
                         At Exo Terra, we understand that owning a reptile or amphibian is a unique and rewarding
@@ -107,7 +116,7 @@ const NewsLetterBox = () => {
                         onChange={handleChange}
                     />
 
-                    <button type="submit" className="bg-black text-white align-middle mx-auto text-xs px-10 py-4 rounded">
+                    <Button type="submit" className="bg-black text-white align-middle mx-auto text-xs px-10 py-4 ">
                         {isLoading ? (
                             <span className="flex gap-2 text-center">
                                 Subscribing
@@ -117,7 +126,7 @@ const NewsLetterBox = () => {
                         ) : (
                             <span>Submit</span>
                         )}
-                    </button>
+                    </Button>
                 </form>
             </div>
         </>

@@ -24,9 +24,9 @@ const Latest_collection = () => {
     return (
         <div className='my-10'>
             <div className='text-center py-8 text-3xl'>
-                <Title text1={"LATEST"} text2={"COLLECTION"} />
+                <Title text1={"Welcome to Beast Bazaar "} text2={"The Wild Awaits!"} />
                 <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum porro placeat nobis quo reiciendis at!
+                    Step into the world of adventure with Beast Bazaar, your one-stop destination for premium terrariums, exotic pet supplies, and habitat essentials. Designed for enthusiasts, by enthusiasts – we bring nature closer to you.
                 </p>
             </div>
             {/* rendring products */}

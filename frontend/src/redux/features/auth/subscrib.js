@@ -8,7 +8,7 @@ const subscribSlice = createSlice({
     initialState,
     reducers: {
         setSubscribInfo: (state, action) => {
-            state.subscribInfo = action.payload.data;
+            state.subscribInfo = action.payload;
         },
     }
 });

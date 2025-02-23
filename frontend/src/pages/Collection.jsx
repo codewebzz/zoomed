@@ -8,16 +8,27 @@ import { setProducts } from '../redux/features/product/productSlice'
 import { Button } from '@material-tailwind/react'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 import PriceRangeSlider from '../components/PriceRangeSlider'
+import { useLocation } from 'react-router-dom'
 const Collection = () => {
     const [category, setCategory] = useState();
     const [sortType, setSortType] = useState("createdAt:desc");
     const [activePage, setActivePage] = useState(1);
     const [totalPages, setTotalPages] = useState();
+    const [filter, setFilter] = useState(false);
     // const [limit, setLimit] = useState(12);
     const [rangeValues, setRangeValues] = useState({ min: 0, max: 15000 });
 
-
     const dispatch = useDispatch();
+
+    const loaction = useLocation();
+
+    useEffect(() => {
+        if (loaction.state?.category) {
+            setCategory(loaction.state?.category)
+        }
+    }, [loaction.state?.category]);
+
+
     const { productList } = useSelector((store) => store.products);
 
     // Construct query parameters dynamically
@@ -98,13 +109,13 @@ const Collection = () => {
             <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
                 {/* Filter options */}
                 <div className='min-w-60'>
-                    <p className='text-xl mt-2 flex item-center cursor-pointer gap-2'>FILTERS
-                        <img className={`h-3 sm:hidden`} src={assets.dropdown_icon} alt="" />
+                    <p className='text-xl mt-2 flex item-center cursor-pointer gap-2' onClick={() => setFilter(!filter)}>FILTERS
+                        <img className={`h-3 mt-2 ${filter ? "transition-transform duration-300 ease-linear origin-center rotate-90" : "transition-transform duration-300 ease-linear origin-center rotate-0"}`} src={assets.dropdown_icon} alt="" />
                     </p>
                     {/* Category filter */}
-                    <div className={`border border-gray-300 pl-5 py-3 mt-6 hidden sm:block`}>
+                    <div className={`border border-gray-300 pl-5 py-3 mt-6 ${filter ? "hidden transition-all duration-700 ease-linear" : "sm:block transition-all duration-700 ease-linear"}`}>
                         <p className='mb-3 text-sm font-medium '>CATEGORIES</p>
-                        {['Exotic fishes', 'Aquarium Fishes', 'Fresh Water Fishes', 'Pond Fishes', 'Monster Fishes', 'Marien Fishes'].map(categoryItem => (
+                        {['Terrariums & Enclosures', 'Heating & Lighting', 'Substrates & Bedding', 'Nutrition & Feeding', 'Decoration & Accessories', 'Water & Filtration'].map(categoryItem => (
                             <p key={categoryItem} className='flex gap-2'>
                                 <input
                                     className='w-3'
@@ -129,7 +140,7 @@ const Collection = () => {
 
                 {/* Right side content */}
                 <div className='flex-1'>
-                    <div className='flex justify-between text-base sm:text-2xl mb-4'>
+                    <div className='flex flex-wrap justify-between text-base sm:text-2xl mb-4'>
                         <Title text1={"ALL"} text2={"COLLECTIONS"} />
                         <select onChange={(e) => { setSortType(`${e.target.value}`) }} className='border-2 border-gray-300 text-sm px-2'>
                             <option value="createdAt:desc">Sort by Date : New to old</option>
@@ -147,7 +158,7 @@ const Collection = () => {
                 </div>
             </div>
             <div className="mt-10 mx-auto">
-                {totalPages > 1 && <div className="flex flex-wrap items-center justify-center gap-2 mx-auto w-full sm:w-3/4 lg:w-1/2">
+                {totalPages > 1 && <div className="flex flex-wrap items-center mb-10 justify-center gap-2 mx-auto w-full sm:w-3/4 lg:w-1/2">
                     {/* Previous Button */}
                     <Button
                         variant="text"

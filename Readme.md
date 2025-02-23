@@ -23,7 +23,7 @@ Ensure you have the following installed on your system:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/swamiankit261/fishProject.git
+git clone https://github.com/codewebzz/zoomed.git
 cd fishProject
 ```
 

@@ -120,8 +120,17 @@ const Product = () => {
                     <p className='border px-5 py-3 text-sm'>Review(122)</p>
                 </div>
                 <div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500'>
-                    <p>An Ecommerce website is an online plateform that facilitates the buying and selling of products or services over the internet. It serves as a virtual marketplace where business and indivisuals can showcase their products ,interact with customers,and cunduct transition without the need for a physical presence.E-commerce websites have gained immencse popularity due to their convenience, accessibility, and the global reach they offer.  </p>
-                    <p>Eccomerce website typically displaye products or services along  with description ,images,prices, and any available variaties (e.g.,size ,color).Each product usually has its own dedicated with relevant information</p>
+                    <p><span className="font-semibold">Privacy Policy </span>
+                        At Beast Bazaar, we value your privacy. We ensure that your personal data is protected and never shared without your consent. Read our full privacy policy here.
+                    </p>
+                    <p>
+                        <span className="font-semibold">Terms & Conditions </span>
+                        By using our website and purchasing our products, you agree to our terms of service. Learn more about our policies regarding returns, refunds, and warranties.
+                    </p>
+                    <p>
+                        <span className="font-semibold">Return & Refund Policy </span>
+                        Not satisfied? We offer hassle-free returns within 30 days of purchase. Check our return policy for details.
+                    </p>
                 </div>
             </div>
             {/* ----------- display related product -------------- */}

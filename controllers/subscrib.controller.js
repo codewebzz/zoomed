@@ -40,7 +40,7 @@ export const getSubscriber = asyncHandler(async (req, res) => {
 });
 
 export const getAllSubscribersAndSearch = asyncHandler(async (req, res) => {
-    const { search, page = 1, limit = 12, sort = "desc" } = req.query;
+    const { search, page = 1, limit = 10, sort = "desc" } = req.query;
 
 
     const conditions = {};

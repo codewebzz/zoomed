@@ -14,7 +14,7 @@ const Add = () => {
 
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
-    const [category, setCategory] = useState("Men")
+    const [category, setCategory] = useState("Terrariums & Enclosures")
     const [countInStock, setCountInStock] = useState()
     const [price, setPrice] = useState(false)
     const [sizes, setSizes] = useState([])
@@ -151,7 +151,11 @@ const Add = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div className='h-12 bg-gray-200 w-32 rounded'></div>
+                <Button type="submit" className="bg-black text-white px-16 py-3 text-sm mt-4 ..." >
+                    Processing <span className='bg-yellow-400 animate-bounce ml-1 p-1 rounded-full inline-flex'></span>
+                    <span className='bg-green-400 p-1 mx-1 animate-bounce rounded-full inline-flex'></span>
+                    <span className='bg-green-400 p-1 animate-bounce rounded-full inline-flex'></span>
+                </Button>
             </div>
         </div>)
             :
@@ -201,7 +205,7 @@ const Add = () => {
                                 <div>
                                     <p className='mb-2'>Product Category</p>
                                     <select className='w-full px-3 py-2' onChange={(e) => setCategory(e.target.value)}>
-                                        {['Exotic fishes', 'Aquarium Fishes', 'Fresh Water Fishes', 'Pond Fishes', 'Monster Fishes', 'Marien Fishes'].map((category) => {
+                                        {['Terrariums & Enclosures', 'Heating & Lighting', 'Substrates & Bedding', 'Nutrition & Feeding', 'Decoration & Accessories', 'Water & Filtration'].map((category) => {
 
                                             return <option key={category} value={category}>{category}</option>
                                         })}

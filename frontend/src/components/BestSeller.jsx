@@ -27,9 +27,9 @@ const BestSeller = () => {
     return (
         <div className='my-10'>
             <div className='text-center text-3xl py-8'>
-                <Title text1={'BEST'} text2={'SELLERS'} />
+                <Title text1={'Explore Our Best'} text2={'SELLERS'} />
                 <p className='w-3/4 m-auto text-gray-700 text-xs sm:text-sm md:text-base'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, labore!</p>
+                    Elevate your pet’s habitat with premium terrariums, eco-friendly substrates, and advanced heating & lighting for optimal comfort. Ensure their well-being with specialized, scientifically formulated nutrition designed for reptiles and exotic pets.</p>
             </div>
             <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
 

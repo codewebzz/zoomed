@@ -11,7 +11,15 @@ const subscribeApiSlice = apiSlice.injectEndpoints({
             }),
             transformResponse: (response) => response
         }),
+        getAllSubscriptions: builder.query({
+            query: (QueryParams) => ({
+                url: `${SUBSCRIBE_URL}/getAllSubscribers/?${QueryParams}`,
+                method: 'GET',
+            }),
+            providesTags: ['Subscriptions'],
+            // transformResponse: (response) => response.results,
+        })
     }),
 });
 
-export const { useSubscribeMutation } = subscribeApiSlice;
+export const { useSubscribeMutation, useGetAllSubscriptionsQuery } = subscribeApiSlice;
